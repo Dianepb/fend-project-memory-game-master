@@ -27,7 +27,7 @@ function shuffle(array) {
     return array;
 }
 
-
+shuffle(allCards);
 
 
 /*
