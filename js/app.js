@@ -2,8 +2,8 @@
  * Create a list that holds all of your cards
  */
 
-const allCards=document.querySelectorAll('.card>.fa'); // creates a Nodelist that contains all the cards'classes and store it in a variable
-// note that although it is a Nodelist and not an array, it seems to accept the array method (like the arry index to access a certain element in an array )
+const allCards=["fa-diamond","fa-paper-plane-o", "fa-anchor","fa-bolt", "fa-cube", "fa-anchor", "fa-leaf", "fa-bicycle", "fa-diamond", "fa-bomb", "fa-leaf", "fa-bomb", "fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"]
+// there must be a smarter way to create the array with a piece of code.  
 
 /*
  * Display the cards on the page
@@ -27,21 +27,8 @@ function shuffle(array) {
     return array;
 }
 
-// mon code : 
-function shuffle(allCards) {
-    var currentIndex = allCards.length, temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = allCards[currentIndex];
-       allCards[currentIndex] = allCards[randomIndex];
-        allCards[randomIndex] = temporaryValue;
-    }
 
-    return allCards;
-};// n'a pas l'air de retourner d'ereur, mais je ne suis pas sûre pour autant que cela marche. En fait, ça ne marche pas. Quand je fais deux fois la focntion 'shuffle, je vois que les cartes apparaissent exactement dans le même ordre. 
-// il faut maintenant que je m'occupe de mettre un event listener pour que cette fonction soit activée lorsque l'on clique sur le bouton 'reload'
 
 /*
  * set up the event listener for a card. If a card is clicked:
