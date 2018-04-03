@@ -2,14 +2,16 @@
  * Create a list that holds all of your cards
  */
 
-const allCards=["fa-diamond","fa-paper-plane-o", "fa-anchor","fa-bolt", "fa-cube", "fa-anchor", "fa-leaf", "fa-bicycle", "fa-diamond", "fa-bomb", "fa-leaf", "fa-bomb", "fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"]
-// there must be a smarter way to create the array with a piece of code.  
+const cards=document.querySelectorAll('.card');
+ // creates a Nodelist that contains all the cards'classes and store it in a variable// 
+const cardArray=[]; // create a variable array to store the cards of the Nodelist into an array
+ cards.forEach(function(card){ // run the function that turns the Nodelist into an array 
+    cardArray.push(card); 
+});
 
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -27,7 +29,13 @@ function shuffle(array) {
     return array;
 }
 
-shuffle(allCards);
+shuffle(cardArray);
+
+
+/*
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+*/
 
 
 /*
