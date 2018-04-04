@@ -34,8 +34,16 @@ shuffle(cardArray);
 
 /*
  *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
+ * $('.card').each(card){
+    innerhtml.attr() // There, I'll have to grab the value of the CardArray, but can not see how. 
+};
+ *
+ *   - add each card's HTML to the page // there I think I can apply the appendChild method 
 */
+
+var newCard = forEach cards function (){
+    cards.appendChild (newCard)
+}
 
 
 /*
