@@ -48,28 +48,23 @@ cards[i].classList.remove("show", "open", "match", "disabled");
 }
 
 
+// I tried to put the clicked cards in an array, but it doesn't work  
+
+for (let i = 0; i < 2; i++) {
+	// grab values of the clicked cards by pushing them into an array
+	cards[i].addEventListener('click',function (){
+	const clickedCardArray=[]
+	}); // create a variable array to store the clicked Cards
+	function(card){ // run the function that pushes the clicked cards into an array 
+    ClickedcardArray.push(card); 
+	};
 
 
-// 2. Add an event listener to the list
-
-//for (let i = 0; i < cards.length; i++) {
-//	cards[i].addEventListener('click',function (){
-//	console.log('pouet');
-	// store the first element clicked in a variable 
-//	let firstCardClicked=cards[i].innerHTML; 
-	// start the counter 
-//});
-//}
-//
 
 
 // 3. Store the first element clicked in a variable and start the counter with this first click, a recursive function (one calling itself) will do this with setTimeout.
 
-//let firstCardClicked=card.nodevalue
-
-
-
- // 4.Flip the card to be visible (css animation, assign a new class to the clicked card).
+// 4.Flip the card to be visible (css animation, assign a new class to the clicked card).
 
 //Toggle class
 
