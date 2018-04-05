@@ -11,8 +11,12 @@ const cardArray=[]; // create a variable array to store the cards of the Nodelis
 
 /*
  * 0.1 Display the cards on the page
+// the cards should be all hidden 
+
+
  *   0.1.1- shuffle the list of cards using the provided "shuffle" method below
  */
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -32,48 +36,31 @@ function shuffle(array) {
 shuffle(cardArray);
 
 
-//for (let i = 0; i < cards.length; i++) {
-//cards[i].parentNode.removeChild(cards[i]);
-//}
 
+// Udacity instructions : 0.1.2 Assign the shuffled classes to the li elements of the list : select those elements and change the classes 
+//  - loop through each card and create its HTML
+
+// Replaces the new cards with the values of the shuffled array
 for (let i = 0; i < cards.length; i++) {
-	cards[i].innerHTML=cardArray[i].innerHTML
+cards[i].innerHTML=cardArray[i].innerHTML;
+// Let the game start with all cards hidden
+cards[i].classList.remove("show", "open", "match", "disabled");
 }
 
-/*
- *   0.1.2 Assign the shuffled classes to the li elements of the list : select those elements and change the classes 
- *   - loop through each card and create its HTML
-*/
-//cardsarray.forEach(card){
-//for (let i = 0; i < cards.length; i++){
-//   cards.appendChild(cardArray[i])
-//}
 
-
-
-
- /*
- *   - add each card's HTML to the page // there I think I can apply the appendChild method 
-*/
-
-//var newCard = forEach cardArray function (){
-//    cards.appendChild (newCard)
-//}
 
 
 // 2. Add an event listener to the list
-// I can not see how to d this 
 
-//test=$('.card')
-// returns 
-//w.fn.init(16) [li.card, li.card, li.card.match, li.card, li.card, li.card.match, li.card, li.card, li.card, li.card, li.card, li.card, li.card.open.show, li.card, li.card, li.card, prevObject: w.fn.init(1)]
-/* test.addEventListener('click',function(){
-*    console.log("a button was clicked");
-*});
-*/
-// The code above doesn't work....
-
-
+//for (let i = 0; i < cards.length; i++) {
+//	cards[i].addEventListener('click',function (){
+//	console.log('pouet');
+	// store the first element clicked in a variable 
+//	let firstCardClicked=cards[i].innerHTML; 
+	// start the counter 
+//});
+//}
+//
 
 
 // 3. Store the first element clicked in a variable and start the counter with this first click, a recursive function (one calling itself) will do this with setTimeout.
