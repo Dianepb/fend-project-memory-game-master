@@ -33,9 +33,6 @@ function shuffle(array) {
     return array;
 }
 
-//shuffle(cardArray);
-
-
 
 // Udacity instructions : 0.1.2 Assign the shuffled classes to the li elements of the list : select those elements and change the classes 
 //  - loop through each card and create its HTML
@@ -49,14 +46,34 @@ cards[i].classList.remove("show", "open", "match", "disabled");
 }
 };
 
-function restartgame () {
+function restartGame () {
 	shuffle(cardArray);
 	setCardsToHidden(cards);
 
 }
-// I tried to put the clicked cards in an array, but it doesn't work  
 
-// TO DO : Put a function 'onclick'
+/*
+*When a card is clicked, shows the other side of the card
+*
+*/
+
+for (let i = 0; i < cards.length; i++){
+    card=cards[i];
+    card.addEventListener('click',cardIsClicked)
+};
+
+function cardIsClicked (){
+    card.classList.toggle('open');
+    card.classList.toggle('show');
+    clickedCardArray.push(card);
+}
+
+// problems : i) I do not have all the symbols in the cards (I think I've lost 'diamond')
+// ii) the last card has a weird behavior : it's showing its symbol even if it's not clicked. 
+
+
+
+
 
 //const clickedCardArray=Array(2);//creates an empty array of two elements; to store the clicked cards
 //function pushCardstoArray(element){ // defines the function to push cards in an array. 
@@ -71,9 +88,6 @@ function restartgame () {
 
 // 3. Store the first element clicked in a variable and start the counter with this first click, a recursive function (one calling itself) will do this with setTimeout.
 
-// 4.Flip the card to be visible (css animation, assign a new class to the clicked card).
-
-//Toggle class
 
 // 5.  Second click and store this element as well in another variable.
 
