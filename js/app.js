@@ -33,7 +33,7 @@ function shuffle(array) {
     return array;
 }
 
-shuffle(cardArray);
+//shuffle(cardArray);
 
 
 
@@ -41,25 +41,32 @@ shuffle(cardArray);
 //  - loop through each card and create its HTML
 
 // Replaces the new cards with the values of the shuffled array
-for (let i = 0; i < cards.length; i++) {
+function setCardsToHidden (){
+	for (let i = 0; i < cards.length; i++) {
 cards[i].innerHTML=cardArray[i].innerHTML;
 // Let the game start with all cards hidden
 cards[i].classList.remove("show", "open", "match", "disabled");
 }
+};
 
+function restartgame () {
+	shuffle(cardArray);
+	setCardsToHidden(cards);
 
+}
 // I tried to put the clicked cards in an array, but it doesn't work  
 
-for (let i = 0; i < 2; i++) {
+// TO DO : Put a function 'onclick'
+
+//const clickedCardArray=Array(2);//creates an empty array of two elements; to store the clicked cards
+//function pushCardstoArray(element){ // defines the function to push cards in an array. 
+//	ClickedcardArray.push(element)
+//};
+
+//for (let i = 0; i < 2; i++) {
 	// grab values of the clicked cards by pushing them into an array
-	cards[i].addEventListener('click',function (){
-	const clickedCardArray=[]
-	}); // create a variable array to store the clicked Cards
-	function(card){ // run the function that pushes the clicked cards into an array 
-    ClickedcardArray.push(card); 
-	};
-
-
+//	cards[i].addEventListener('click',pushCardstoArray);
+//};
 
 
 // 3. Store the first element clicked in a variable and start the counter with this first click, a recursive function (one calling itself) will do this with setTimeout.
