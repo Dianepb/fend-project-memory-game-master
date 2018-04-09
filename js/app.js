@@ -56,34 +56,26 @@ function restartGame () {
 *When a card is clicked, shows the other side of the card
 *
 */
+const clickedCardArray=[];//creates an empty array of two elements; to store the clicked cards
 
-for (let i = 0; i < cards.length; i++){
-    card=cards[i];
-    card.addEventListener('click',cardIsClicked)
-};
+/*
+*
+Hourray ! After hours of trying, I eventually made it ! 
+Now, when I click on the card, the class 'open' is added, the symbol shows, and the card is added to a new array. 
+Also, I'll have to store this in a function, to be called right after the restart game function.  
+*
+*/
+cardArray.forEach(function(card){ // I found this method much easier than the classical one 
+   card.addEventListener('click',function(){
+       this.classList.toggle('open'); // changes the background color of the card from black to blue 
+       this.classList.toggle('show'); // make the symbols show
+       clickedCardArray.push(card); // stores the value of the clicked cards in an array. I have to find a way to limit the maxiumum number of holded cards to 2. 
+   });
+});
 
-function cardIsClicked (){
-    card.classList.toggle('open');
-    card.classList.toggle('show');
-    clickedCardArray.push(card);
-}
-
-// problems : i) I do not have all the symbols in the cards (I think I've lost 'diamond')
-// ii) the last card has a weird behavior : it's showing its symbol even if it's not clicked. 
+//
 
 
-
-
-
-//const clickedCardArray=Array(2);//creates an empty array of two elements; to store the clicked cards
-//function pushCardstoArray(element){ // defines the function to push cards in an array. 
-//	ClickedcardArray.push(element)
-//};
-
-//for (let i = 0; i < 2; i++) {
-	// grab values of the clicked cards by pushing them into an array
-//	cards[i].addEventListener('click',pushCardstoArray);
-//};
 
 
 // 3. Store the first element clicked in a variable and start the counter with this first click, a recursive function (one calling itself) will do this with setTimeout.
