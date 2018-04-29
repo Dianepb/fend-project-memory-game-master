@@ -57,7 +57,7 @@ function restartGame () {
 *
 */
 const clickedCardArray=[];//creates an empty array of two elements; to store the clicked cards
-const matchedCardsArray=[];//creates an empty array to store the cards that match
+
 /*
 *
 Hourray ! After hours of trying, I eventually made it ! 
@@ -74,26 +74,13 @@ cardArray.forEach(function(card){ // I found this method much easier than the cl
 });
 
 //
-
-//
 // I'm trying to make sure that the clickedCard array will not contain more that two cards
-// !!!!!!!!!!!!!!!!!!!!Note that the function can not run unless evocked; 
-
+function manageClickedCards (){
 let arrayLength=clickedCardArray.length
-let firstClickedcard=clickedCardArray[1].firstElementChild
-let secondClickedcard=clickedCardArray[2].firstElementChild
-if (arrayLength = 2 && firstClickedcard!=secondClickedcard) {
-  clickedCardArray[1].classList.toggle('open');
-  clickedCardArray[1].classList.toggle('show');
-  clickedCardArray[2].classList.toggle('open');
-  clickedCardArray[2].classList.toggle('show');
+if (arrayLength > 2) {
   // remove all cards from the array
-  clickedCardArray.splice(0,20,0);
+  clickedCardArray.splice(0,3,0);
 }
-else if (arrayLength = 2 && firstClickedcard===secondClickedcard){
-  clickedCardArray[1].classList.toggle('match');
-  clickedCardArray[2].classList.toggle('match');
-  // I should push those cards in a new array 'Matchedcards'
 }
 
 
