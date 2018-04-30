@@ -57,6 +57,52 @@ function restartGame () {
 *
 */
 let clickedCardArray=[];//creates an empty array; to store the clicked cards. I use let instead of const, otherwise I will not be able to empty it by resetting its value. 
+let matchedCardsArray=[];// /creates an empty array; to store the matched cards.
+
+function manageClickedCards (){
+if (arrayLength === 2 && firstClickedcard!=secondClickedcard) {
+  clickedCardArray[0].classList.toggle('open');
+  clickedCardArray[0].classList.toggle('show');
+  clickedCardArray[1].classList.toggle('open');
+  clickedCardArray[1].classList.toggle('show');
+  clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
+}
+else if (arrayLength === 2 && firstClickedcard===secondClickedcard){
+  clickedCardArray[0].classList.toggle('match');
+  clickedCardArray[1].classList.toggle('match');
+  // I should push those cards in a new array 'Matchedcards';
+  clickedCardArray.forEach(function(card){
+  matchedCardsArray.push(card); 
+  clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
+})
+}
+
+// Now, I have to store this in a function
+ function cardIsClicked (){
+    card.addEventListener('click',function(){
+       this.classList.toggle('open'); // changes the background color of the card from black to blue 
+       this.classList.toggle('show'); // make the symbols show
+   });
+};
+}
+
+// I tought it would make sense to comple all functions and store them to be invoked when a card is clicked
+
+cardArray.forEach(function(card){ // I found this method much easier than the classical one 
+  card.addEventListener('click',cardIsClicked);
+  card.addEventListener('click',manageClickedCards);
+});
+
+
+
+
+
+// 6. Flip the card 
+//Toggle class
+
+// 7. Check those variables for match class
+//if class===class  
+
 
 /*
 *
@@ -99,48 +145,6 @@ else if (arrayLength === 2 && firstClickedcard===secondClickedcard){
 }
 
 */
-
-function manageClickedCards (){
-if (arrayLength === 2 && firstClickedcard!=secondClickedcard) {
-  clickedCardArray[0].classList.toggle('open');
-  clickedCardArray[0].classList.toggle('show');
-  clickedCardArray[1].classList.toggle('open');
-  clickedCardArray[1].classList.toggle('show');
-  clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
-}
-else if (arrayLength === 2 && firstClickedcard===secondClickedcard){
-  clickedCardArray[0].classList.toggle('match');
-  clickedCardArray[1].classList.toggle('match');
-  // I should push those cards in a new array 'Matchedcards';
-  clickedCardArray.forEach(function(card){
-  matchedCardsArray.push(card); 
-  clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
-}
-}
-
-// Now, I have to store this in a function
- function cardIsClicked (){
-    card.addEventListener('click',function(){
-       this.classList.toggle('open'); // changes the background color of the card from black to blue 
-       this.classList.toggle('show'); // make the symbols show
-   });
-};
-}
-
-cardArray.forEach(function(card){ // I found this method much easier than the classical one 
-  card.addEventListener('click',cardIsClicked);
-  card.addEventListener('click',manageClickedCards);
-});
-}
-
-// 6. Flip the card 
-//Toggle class
-
-// 7. Check those variables for match class
-//if class===class  
-
-
-
 
 
  
