@@ -39,7 +39,7 @@ function shuffle(array) {
 
 // Replaces the new cards with the values of the shuffled array
 function setCardsToHidden (){
-	for (let i = 0; i < cards.length; i++) {
+  for (let i = 0; i < cards.length; i++) {
 cards[i].innerHTML=cardArray[i].innerHTML;
 // Let the game start with all cards hidden
 cards[i].classList.remove("show", "open", "match", "disabled");
@@ -47,8 +47,8 @@ cards[i].classList.remove("show", "open", "match", "disabled");
 };
 
 function restartGame () {
-	shuffle(cardArray);
-	setCardsToHidden(cards);
+  shuffle(cardArray);
+  setCardsToHidden(cards);
 
 }
 
@@ -56,8 +56,8 @@ function restartGame () {
 *When a card is clicked, shows the other side of the card
 *
 */
-const clickedCardArray=[];//creates an empty array of two elements; to store the clicked cards
-const matchedCardsArray=[];//creates an empty array to store the cards that match
+let clickedCardArray=[];//creates an empty array; to store the clicked cards. I use let instead of const, otherwise I will not be able to empty it by resetting its value. 
+
 /*
 *
 Hourray ! After hours of trying, I eventually made it ! 
@@ -75,34 +75,33 @@ cardArray.forEach(function(card){ // I found this method much easier than the cl
 
 //
 
-//
-// I'm trying to make sure that the clickedCard array will not contain more that two cards
-// !!!!!!!!!!!!!!!!!!!!Note that the function can not run unless evocked; 
+
+
 
 let arrayLength=clickedCardArray.length
-let firstClickedcard=clickedCardArray[1].firstElementChild
-let secondClickedcard=clickedCardArray[2].firstElementChild
-if (arrayLength = 2 && firstClickedcard!=secondClickedcard) {
-  clickedCardArray[1].classList.toggle('open');
-  clickedCardArray[1].classList.toggle('show');
-  clickedCardArray[2].classList.toggle('open');
-  clickedCardArray[2].classList.toggle('show');
-  // remove all cards from the array
-  clickedCardArray.splice(0,20,0);
-}
-else if (arrayLength = 2 && firstClickedcard===secondClickedcard){
-  clickedCardArray[1].classList.toggle('match');
-  clickedCardArray[2].classList.toggle('match');
-  // I should push those cards in a new array 'Matchedcards'
-}
-
-
+let firstClickedcard=clickedCardArray[0].innerHTML
 // 3. Store the first element clicked in a variable and start the counter with this first click, a recursive function (one calling itself) will do this with setTimeout.
-
-
+let secondClickedcard=clickedCardArray[1].innerHTML
 // 5.  Second click and store this element as well in another variable.
 
-//let firstCardClicked="";
+if (arrayLength === 2 && firstClickedcard!=secondClickedcard) {
+  clickedCardArray[0].classList.toggle('open');
+  clickedCardArray[0].classList.toggle('show');
+  clickedCardArray[1].classList.toggle('open');
+  clickedCardArray[1].classList.toggle('show');
+  clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
+}
+else if (arrayLength === 2 && firstClickedcard===secondClickedcard){
+  clickedCardArray[0].classList.toggle('match');
+  clickedCardArray[1].classList.toggle('match');
+  // I should push those cards in a new array 'Matchedcards';
+  clickedCardArray.forEach(function(card){
+  matchedCardsArray.push(card); 
+  clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
+}
+
+
+
 
 // 6. Flip the card 
 //Toggle class
