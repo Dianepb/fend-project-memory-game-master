@@ -65,7 +65,8 @@ Now, when I click on the card, the class 'open' is added, the symbol shows, and 
 Also, I'll have to store this in a function, to be called right after the restart game function.  
 *
 */
-cardArray.forEach(function(card){ // I found this method much easier than the classical one 
+// I tried to wrap it up in a function (line 121)
+/*cardArray.forEach(function(card){ // I found this method much easier than the classical one 
  card.addEventListener('click',function(){
       this.classList.toggle('open'); // changes the background color of the card from black to blue 
       this.classList.toggle('show'); // make the symbols show
@@ -75,15 +76,12 @@ cardArray.forEach(function(card){ // I found this method much easier than the cl
 
 //
 
-
-
-
 let arrayLength=clickedCardArray.length
 let firstClickedcard=clickedCardArray[0].innerHTML
 // 3. Store the first element clicked in a variable and start the counter with this first click, a recursive function (one calling itself) will do this with setTimeout.
 let secondClickedcard=clickedCardArray[1].innerHTML
 // 5.  Second click and store this element as well in another variable.
-
+// I tried to wrap this up in a function (line 103)
 if (arrayLength === 2 && firstClickedcard!=secondClickedcard) {
   clickedCardArray[0].classList.toggle('open');
   clickedCardArray[0].classList.toggle('show');
@@ -100,8 +98,40 @@ else if (arrayLength === 2 && firstClickedcard===secondClickedcard){
   clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
 }
 
+*/
 
+function manageClickedCards (){
+if (arrayLength === 2 && firstClickedcard!=secondClickedcard) {
+  clickedCardArray[0].classList.toggle('open');
+  clickedCardArray[0].classList.toggle('show');
+  clickedCardArray[1].classList.toggle('open');
+  clickedCardArray[1].classList.toggle('show');
+  clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
+}
+else if (arrayLength === 2 && firstClickedcard===secondClickedcard){
+  clickedCardArray[0].classList.toggle('match');
+  clickedCardArray[1].classList.toggle('match');
+  // I should push those cards in a new array 'Matchedcards';
+  clickedCardArray.forEach(function(card){
+  matchedCardsArray.push(card); 
+  clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
+}
+}
 
+// Now, I have to store this in a function
+ function cardIsClicked (){
+    card.addEventListener('click',function(){
+       this.classList.toggle('open'); // changes the background color of the card from black to blue 
+       this.classList.toggle('show'); // make the symbols show
+   });
+};
+}
+
+cardArray.forEach(function(card){ // I found this method much easier than the classical one 
+  card.addEventListener('click',cardIsClicked);
+  card.addEventListener('click',manageClickedCards);
+});
+}
 
 // 6. Flip the card 
 //Toggle class
