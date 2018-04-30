@@ -49,7 +49,6 @@ cards[i].classList.remove("show", "open", "match", "disabled");
 function restartGame () {
   shuffle(cardArray);
   setCardsToHidden(cards);
-
 }
 
 /*
@@ -58,7 +57,24 @@ function restartGame () {
 */
 let clickedCardArray=[];//creates an empty array; to store the clicked cards. I use let instead of const, otherwise I will not be able to empty it by resetting its value. 
 let matchedCardsArray=[];// /creates an empty array; to store the matched cards.
+let arrayLength=clickedCardArray.length
+let firstClickedcard=clickedCardArray[0].innerHTML
+let secondClickedcard=clickedCardArray[1].innerHTML
 
+
+// function that shows the cards and their symbols 
+ function cardIsClicked (){
+   cardArray.forEach(function(card){ // I found this method much easier than the classical one 
+   card.addEventListener('click',function(){
+       this.classList.toggle('open'); // changes the background color of the card from black to blue 
+       this.classList.toggle('show'); // make the symbols show
+       clickedCardArray.push(card); // stores the value of the clicked cards in an array
+   });
+});
+}
+
+
+// function that compares cards values 
 function manageClickedCards (){
 if (arrayLength === 2 && firstClickedcard!=secondClickedcard) {
   clickedCardArray[0].classList.toggle('open');
@@ -76,22 +92,17 @@ else if (arrayLength === 2 && firstClickedcard===secondClickedcard){
   clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
 })
 }
-
-// Now, I have to store this in a function
- function cardIsClicked (){
-    card.addEventListener('click',function(){
-       this.classList.toggle('open'); // changes the background color of the card from black to blue 
-       this.classList.toggle('show'); // make the symbols show
-   });
-};
 }
 
-// I tought it would make sense to comple all functions and store them to be invoked when a card is clicked
 
-cardArray.forEach(function(card){ // I found this method much easier than the classical one 
-  card.addEventListener('click',cardIsClicked);
-  card.addEventListener('click',manageClickedCards);
-});
+
+
+// function that is compiling the other functions, and store them to be invoked when a card is clicked
+cardArray.forEach(function(card) {
+	card.addEventListener('click',cardIsClicked);
+  	card.addEventListener('click',manageClickedCards);
+   });
+
 
 
 
