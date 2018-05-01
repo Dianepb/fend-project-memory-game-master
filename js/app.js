@@ -66,14 +66,17 @@ let arrayLength=clickedCardArray.length
        this.classList.toggle('open'); // changes the background color of the card from black to blue 
        this.classList.toggle('show'); // make the symbols show
        clickedCardArray.push(this); // stores the value of the clicked cards in an array
-};
+	};
 
-
+/*
+* Old function manageClikedCards
+*
 
 // function that compares cards values 
 function manageClickedCards (){
-	let firstClickedcard=clickedCardArray[0].innerHTML
-	let secondClickedcard=clickedCardArray[1].innerHTML
+//	console.log(clickedCardArray);
+	let firstClickedcard=clickedCardArray[0].lastElementChild;
+	let secondClickedcard=clickedCardArray[1].lastElementChild;
 if (arrayLength === 2 && firstClickedcard!=secondClickedcard) {
   clickedCardArray[0].classList.toggle('open');
   clickedCardArray[0].classList.toggle('show');
@@ -91,6 +94,37 @@ else if (arrayLength === 2 && firstClickedcard===secondClickedcard){
 })
 }
 }
+
+*/
+
+// function that compares cards values - with nested if, to make sure that function executes when the ClickedCardArray has 2 items, innerhtml property replaced by lastElementChild to identify cards, and a setTimeoutfunction, to have the opportunity to see the cards toggling
+function manageClickedCards (){
+
+if (clickedCardArray.length === 2) 
+{
+    if (clickedCardArray[0].lastElementChild!=clickedCardArray[1].lastElementChild) {
+        clickedCardArray[0].classList.toggle('open');
+        clickedCardArray[0].classList.toggle('show');
+        clickedCardArray[1].classList.toggle('open');
+        clickedCardArray[1].classList.toggle('show');
+        clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
+     }
+    else if (clickedCardArray[0].lastElementChild===clickedCardArray[1].lastElementChild){
+      clickedCardArray[0].classList.toggle('match');
+      clickedCardArray[1].classList.toggle('match');
+      // I should push those cards in a new array 'Matchedcards';
+      clickedCardArray.forEach(function(card){
+      matchedCardsArray.push(card); 
+      clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
+      });
+    }
+}
+}
+setTimeout(manageClickedCards,1000);
+
+
+
+
 
 
 
