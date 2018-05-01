@@ -103,13 +103,16 @@ function manageClickedCards (){
 if (clickedCardArray.length === 2) 
 {
     if (clickedCardArray[0].lastElementChild!=clickedCardArray[1].lastElementChild) {
+        setTimeout(function (){
         clickedCardArray[0].classList.toggle('open');
         clickedCardArray[0].classList.toggle('show');
         clickedCardArray[1].classList.toggle('open');
         clickedCardArray[1].classList.toggle('show');
         clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
+     },500)
      }
     else if (clickedCardArray[0].lastElementChild===clickedCardArray[1].lastElementChild){
+      setTimeout(function (){
       clickedCardArray[0].classList.toggle('match');
       clickedCardArray[1].classList.toggle('match');
       // I should push those cards in a new array 'Matchedcards';
@@ -117,22 +120,17 @@ if (clickedCardArray.length === 2)
       matchedCardsArray.push(card); 
       clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
       });
-    }
+    },500)
 }
 }
-setTimeout(manageClickedCards,1000);
-
-
-
-
-
-
+}
 
 // function that is compiling the other functions, and store them to be invoked when a card is clicked
 cardArray.forEach(function(card) {
   card.addEventListener('click',cardIsClicked);
   	card.addEventListener('click',manageClickedCards);
    });
+
 
 
 
