@@ -52,7 +52,7 @@ function restartGame () {
 let clickedCardArray=[];//creates an empty array; to store the clicked cards. I use let instead of const, otherwise I will not be able to empty it by resetting its value. 
 let matchedCardsArray=[];// /creates an empty array; to store the matched cards.
 let arrayLength=clickedCardArray.length
-
+const modal = document.getElementById('myModal');
 
 
 // function that shows the cards and their symbols 
@@ -112,6 +112,10 @@ if (clickedCardArray.length === 2)
       // I should push those cards in a new array 'Matchedcards';
       clickedCardArray.forEach(function(card){
       matchedCardsArray.push(card); 
+      // function that is making the pop-up show at the end of the game 
+      if (matchedCardsArray.length===16){
+      modal.style.display = "block";
+      }
       clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
       });
     },500)
@@ -125,10 +129,7 @@ cardArray.forEach(function(card) {
   	card.addEventListener('click',manageClickedCards);
    });
 
-// function that is making the pop-up show at the end of the game 
-if (matchedCardsArray.length===16){
-  modal.style.display = "block"; // source = https://www.w3schools.com/howto/howto_css_modals.asp
-}
+
 
 // function that is closing the pop up
 var span = document.getElementsByClassName("close")[0];// Get the <span> element that closes the modal
