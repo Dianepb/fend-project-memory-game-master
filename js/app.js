@@ -102,7 +102,7 @@ function manageClickedCards (){
 
 if (clickedCardArray.length === 2) 
 {
-    if (clickedCardArray[0].lastElementChild!=clickedCardArray[1].lastElementChild) {
+    if (clickedCardArray[0].outerHTML!=clickedCardArray[1].outerHTML) {
         setTimeout(function (){
         clickedCardArray[0].classList.toggle('open');
         clickedCardArray[0].classList.toggle('show');
@@ -111,7 +111,7 @@ if (clickedCardArray.length === 2)
         clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
      },500)
      }
-    else if (clickedCardArray[0].lastElementChild===clickedCardArray[1].lastElementChild){
+    else if (clickedCardArray[0].outerHTML===clickedCardArray[1].outerHTML){
       setTimeout(function (){
       clickedCardArray[0].classList.toggle('match');
       clickedCardArray[1].classList.toggle('match');
