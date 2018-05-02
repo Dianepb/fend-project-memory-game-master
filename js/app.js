@@ -4,22 +4,20 @@
 
 const cards=document.querySelectorAll('.card');
  // creates a Nodelist that contains all the cards'classes and store it in a variable// 
-const cardArray=[]; // create a variable array to store the cards of the Nodelist into an array
- cards.forEach(function(card){ // run the function that turns the Nodelist into an array 
+const cardArray=[]; // creates a variable array to store the cards of the Nodelist into an array
+ cards.forEach(function(card){ // runs the function that turns the Nodelist into an array 
     cardArray.push(card); 
 });
 
 /*
  * 0.1 Display the cards on the page
-// the cards should be all hidden 
+* the cards should be all hidden 
+*/
 
-
- *   0.1.1- shuffle the list of cards using the provided "shuffle" method below
- */
-
-
+ //   0.1.1- shuffle the list of cards using the provided "shuffle" method below
+ 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
+  function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -34,15 +32,11 @@ function shuffle(array) {
 }
 
 
-// Udacity instructions : 0.1.2 Assign the shuffled classes to the li elements of the list : select those elements and change the classes 
-//  - loop through each card and create its HTML
-
 // Replaces the new cards with the values of the shuffled array
 function setCardsToHidden (){
   for (let i = 0; i < cards.length; i++) {
-cards[i].innerHTML=cardArray[i].innerHTML;
-// Let the game start with all cards hidden
-cards[i].classList.remove("show", "open", "match", "disabled");
+cards[i]=cardArray[i];// replaces the cards of the initial deck with the ones of the shuffled array
+cards[i].classList.remove("show", "open", "match", "disabled");// Lets the game start with all cards hidden
 }
 };
 
