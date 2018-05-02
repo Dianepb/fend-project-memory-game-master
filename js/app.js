@@ -132,7 +132,6 @@ cardArray.forEach(function(card) {
 
 
 // function that is closing the pop up
-var span = document.getElementsByClassName("close")[0];// Get the <span> element that closes the modal
-span.onclick = function() { // When the user clicks on <span> (x), close the modal
+ function closeModal() { // When the user clicks on button, closes the modal
     modal.style.display = "none";
 }

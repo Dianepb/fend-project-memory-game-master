@@ -155,6 +155,9 @@ h1 {
     animation-duration: 0.4s
 }
 
+
+}    
+
 /* Add Animation */
 @keyframes animatetop {
     from {top: -300px; opacity: 0}
