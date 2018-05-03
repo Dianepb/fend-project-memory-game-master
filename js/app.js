@@ -45,6 +45,11 @@ function restartGame () {
   setCardsToHidden(cards);
 }
 
+function playAgain(){
+	restartGame ();
+	closeModal ();
+}
+
 /*
 *When a card is clicked, shows the other side of the card
 *
