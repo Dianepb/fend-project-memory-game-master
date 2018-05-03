@@ -1,7 +1,7 @@
 /*
  * 0 -Create a list that holds all of my cards
  */
-
+const body=document.getElementsByTagName('body');
 const cards=document.querySelectorAll('.card');
  // creates a Nodelist that contains all the cards'classes and store it in a variable// 
 const cardArray=[]; // creates a variable array to store the cards of the Nodelist into an array
@@ -58,6 +58,7 @@ let clickedCardArray=[];//creates an empty array; to store the clicked cards. I 
 let matchedCardsArray=[];// /creates an empty array; to store the matched cards.
 let arrayLength=clickedCardArray.length
 const modal = document.getElementById('myModal');
+
 
 
 // function that shows the cards and their symbols 
@@ -127,6 +128,9 @@ if (clickedCardArray.length === 2)
 }
 }
 }
+
+// lets all cards hidden at the beginning of the game 
+body.onload= restartGame();
 
 // function that is compiling the other functions, and store them to be invoked when a card is clicked
 cardArray.forEach(function(card) {
