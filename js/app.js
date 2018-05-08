@@ -2,12 +2,19 @@
  * 0 -Create a list that holds all of my cards
  */
 const body=document.getElementsByTagName('body');
-const cards=document.querySelectorAll('.card');
+let cards=document.querySelectorAll('.card');
  // creates a Nodelist that contains all the cards'classes and store it in a variable// 
 const cardArray=[]; // creates a variable array to store the cards of the Nodelist into an array
  cards.forEach(function(card){ // runs the function that turns the Nodelist into an array 
     cardArray.push(card); 
 });
+
+
+//test
+// let cards=document.querySelectorAll('.card');
+
+
+
 
 /*
  * 0.1 Display the cards on the page
@@ -39,6 +46,11 @@ cards[i]=cardArray[i];// replaces the cards of the initial deck with the ones of
 cards[i].classList.remove("show", "open", "match", "disabled");// Lets the game start with all cards hidden
 }
 };
+
+// test
+//cards=[];
+
+
 
 function restartGame () {
   shuffle(cardArray);
@@ -149,7 +161,7 @@ cardArray.forEach(function(card) {
     modal.style.display = "none";
 }
 
-// function timer (source : https://www.proglogic.com/code/javascript/time/chronometer.php)
+// function timer (I was largely inspired by this source : https://www.proglogic.com/code/javascript/time/chronometer.php)
 var startTime = 0
 var start = 0
 var end = 0
@@ -179,32 +191,29 @@ function chrono(){
 	timerID = setTimeout("chrono()", 10)
 }
 function chronoStart(){
-	//document.chronoForm.startstop.value = "stop!"
-	//document.chronoForm.startstop.onclick = chronoStop
-	// document.chronoForm.reset.onclick = chronoReset
 	start = new Date()
 	chrono()
 }
 function chronoContinue(){
-	//document.chronoForm.startstop.value = "stop!"
-	//document.chronoForm.startstop.onclick = chronoStop
-	//document.chronoForm.reset.onclick = chronoReset
 	start = new Date()-diff
 	start = new Date(start)
 	chrono()
 }
-function chronoReset(){
-//	document.getElementById("chronotime").innerHTML = "0:00:00:000"
-	start = new Date()
-}
+
 function chronoStopReset(){
 	document.getElementById("chronotime").innerHTML = "0:00:00:000"
-	document.chronoForm.startstop.onclick = chronoStart
 }
+
+ if (matchedCardsArray.length===16){
+ 	function chronoStop(){
+	clearTimeout(timerID)
+}
+ }
+
 function chronoStop(){
-	document.chronoForm.startstop.value = "start!"
-	document.chronoForm.startstop.onclick = chronoContinue
-	document.chronoForm.reset.onclick = chronoStopReset
 	clearTimeout(timerID)
 }
 
+if (matchedCardsArray.length===16){
+	console.log('test')
+}
