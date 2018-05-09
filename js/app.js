@@ -7,6 +7,7 @@ let cards=document.querySelectorAll('.card');
 const cardArray=[]; // creates a variable array to store the cards of the Nodelist into an array
 const oldCards=$('.deck').children();
 const deck=$('.deck')
+let moveCount=0 // number of moves to show all cards by pairs 
 
 cards.forEach(function(card){ // runs the function that turns the Nodelist into an array 
     cardArray.push(card); 
@@ -87,6 +88,11 @@ let matchedCardsArray=[];// /creates an empty array; to store the matched cards.
 let arrayLength=clickedCardArray.length
 const modal = document.getElementById('myModal');
 
+// test : function that is incrementing the number of moves 
+function incrementMoves(){
+  moveCount=++moveCount;
+  return moveCount;
+}
 
 // function that shows the cards and their symbols 
  function cardIsClicked (){
@@ -97,8 +103,8 @@ const modal = document.getElementById('myModal');
 
 // function that compares cards values - with nested if, to make sure that function executes when the ClickedCardArray has 2 items, innerhtml property replaced by lastElementChild to identify cards, and a setTimeoutfunction, to have the opportunity to see the cards toggling
 function manageClickedCards (){
-
-if (clickedCardArray.length === 1) { // initializes the timer once the first card is clicked
+// test
+if (clickedCardArray.length === 1 && diff ===0) { // initializes the timer once the first card is clicked
 	start=new Date();
 }	
 
@@ -124,6 +130,7 @@ else if (clickedCardArray.length === 2)
       if (matchedCardsArray.length===16){
       end=new Date();
       document.getElementById("totalTime").innerHTML = timeSpent();
+      document.getElementById("totalMoves").innerHTML = incrementMoves();
       modal.style.display = "block";
       }
       clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
@@ -136,9 +143,9 @@ else if (clickedCardArray.length === 2)
 // function that is compiling the other functions, and store them to be invoked when a card is clicked
 cardArray.forEach(function(card) {
   card.addEventListener('click',cardIsClicked);
-  	card.addEventListener('click',manageClickedCards);
+  card.addEventListener('click',manageClickedCards);
+  card.addEventListener('click',incrementMoves);// test
    });
-
 
 
 // function that is closing the pop up
