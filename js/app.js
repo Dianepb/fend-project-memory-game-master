@@ -91,7 +91,7 @@ const modal = document.getElementById('myModal');
 // test : function that is incrementing the number of moves 
 function incrementMoves(){
   moveCount=++moveCount;
-  return moveCount;
+  document.getElementById("totalMoves").innerHTML = moveCount;
 }
 
 // function that shows the cards and their symbols 
@@ -104,7 +104,7 @@ function incrementMoves(){
 // function that compares cards values - with nested if, to make sure that function executes when the ClickedCardArray has 2 items, innerhtml property replaced by lastElementChild to identify cards, and a setTimeoutfunction, to have the opportunity to see the cards toggling
 function manageClickedCards (){
 // test
-if (clickedCardArray.length === 1 && diff ===0) { // initializes the timer once the first card is clicked
+if (clickedCardArray.length === 1 && start === 0) { // initializes the timer once the first card is clicked
 	start=new Date();
 }	
 
@@ -130,8 +130,8 @@ else if (clickedCardArray.length === 2)
       if (matchedCardsArray.length===16){
       end=new Date();
       document.getElementById("totalTime").innerHTML = timeSpent();
-      document.getElementById("totalMoves").innerHTML = incrementMoves();
       modal.style.display = "block";
+      displayStars();
       }
       clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
       });
@@ -173,3 +173,16 @@ function timeSpent(){
 	return ""+min+" min "+sec+" sec";
 }
 
+const stars=$('.stars').children();
+
+function displayStars (){
+	if (moveCount <=40){
+		stars[2].classList.toggle('good');
+	}
+	if (moveCount <=60){
+		stars[1].classList.toggle('good');
+	}
+	if (moveCount <=90){
+		stars[0].classList.toggle('good');
+	}
+}

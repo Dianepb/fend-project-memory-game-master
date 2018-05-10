@@ -98,6 +98,11 @@ h1 {
     margin: 0 5px 0 0;
 }
 
+.good {
+    color:red;
+    font-style: 2 em
+}
+
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
