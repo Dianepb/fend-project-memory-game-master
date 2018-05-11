@@ -66,17 +66,25 @@ card.classList.remove("show", "open", "match", "disabled");// Lets the game star
 // test OK - lets all cards hidden at the beginning of the game 
 body.onload= restartGame();
 
+// test ok
+function setMovesToZero (){
+  moveCount=0;
+  document.getElementById("totalMoves").innerHTML = moveCount;
+}
+
 //test ok
 function restartGame () {
 	removeExistingCards();
-  	shuffle(cardArray);
-  	appendNewCards();
-  	setCardsToHidden(cards);
+  shuffle(cardArray);
+	appendNewCards();
+  setCardsToHidden(cards);
+  setMovesToZero ();
 }
 
 function playAgain(){
 	restartGame ();
 	closeModal ();
+  setMovesToZero ();
 }
 
 /*
@@ -128,6 +136,7 @@ else if (clickedCardArray.length === 2)
       matchedCardsArray.push(card); 
       // function that is making the pop-up show at the end of the game 
       if (matchedCardsArray.length===16){
+      document.getElementById("totalMovesModal").innerHTML = moveCount;
       end=new Date();
       document.getElementById("totalTime").innerHTML = timeSpent();
       modal.style.display = "block";
