@@ -8,6 +8,8 @@ const cardArray=[]; // creates a variable array to store the cards of the Nodeli
 const oldCards=$('.deck').children();
 const deck=$('.deck')
 let moveCount=0 // number of moves to show all cards by pairs 
+const stars=$('.stars').children();
+let matchedCardsArray=[];// /creates an empty array; to store the matched cards.
 
 cards.forEach(function(card){ // runs the function that turns the Nodelist into an array 
     cardArray.push(card); 
@@ -20,14 +22,6 @@ cards.forEach(function(card){ // runs the function that turns the Nodelist into 
 * the cards should be all hidden 
 */
 
- 
-// Replaces the new cards with the values of the shuffled array
-//function setCardsToHidden (){
-//  for (let i = 0; i < cards.length; i++) {
-//cards[i]=cardArray[i];// replaces the cards of the initial deck with the ones of the shuffled array
-//cards[i].classList.remove("show", "open", "match", "disabled");// Lets the game start with all cards hidden
-//}
-//};
 
 //test OK
 function removeExistingCards (){
@@ -63,6 +57,12 @@ card.classList.remove("show", "open", "match", "disabled");// Lets the game star
 });
 }
 
+//test ok
+function BackToBlack (){
+stars.removeClass('good');// Lets the game start with all stars colored in black
+}
+
+
 // test OK - lets all cards hidden at the beginning of the game 
 body.onload= restartGame();
 
@@ -75,16 +75,21 @@ function setMovesToZero (){
 //test ok
 function restartGame () {
 	removeExistingCards();
-  shuffle(cardArray);
+  	shuffle(cardArray);
 	appendNewCards();
-  setCardsToHidden(cards);
-  setMovesToZero ();
+  	setCardsToHidden(cards);
+  	setMovesToZero ();
+  	BackToBlack ();
+  	matchedCardsArray=[] // test
 }
 
 function playAgain(){
 	restartGame ();
 	closeModal ();
-  setMovesToZero ();
+  	setMovesToZero ();
+  	BackToBlack ();
+  	matchedCardsArray=[] //test
+
 }
 
 /*
@@ -92,7 +97,7 @@ function playAgain(){
 *
 */
 let clickedCardArray=[];//creates an empty array; to store the clicked cards. I use let instead of const, otherwise I will not be able to empty it by resetting its value. 
-let matchedCardsArray=[];// /creates an empty array; to store the matched cards.
+
 let arrayLength=clickedCardArray.length
 const modal = document.getElementById('myModal');
 
@@ -181,8 +186,6 @@ function timeSpent(){
 	var min = diff.getMinutes();
 	return ""+min+" min "+sec+" sec";
 }
-
-const stars=$('.stars').children();
 
 function displayStars (){
 	if (moveCount <=40){
