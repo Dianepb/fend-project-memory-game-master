@@ -149,6 +149,7 @@ else if (clickedCardArray.length === 2)
       document.getElementById("totalTimeModal").innerHTML = timeSpent();
       modal.style.display = "block";
       displayStars();
+      setTimerToZero();//test today
       }
       clickedCardArray = [];// remove all cards from the array, seems to work better than splice method. 
       });
@@ -161,7 +162,7 @@ else if (clickedCardArray.length === 2)
 cardArray.forEach(function(card) {
   card.addEventListener('click',cardIsClicked);
   card.addEventListener('click',manageClickedCards);
-  card.addEventListener('click',incrementMoves);// test
+  card.addEventListener('click',incrementMoves);// test OK
    });
 
 
@@ -185,18 +186,6 @@ function timeSpent(){
 	return ""+min+" min "+sec+" sec";
 }
 
-function displayStars (){
-	if (moveCount <=40){
-		stars[2].classList.toggle('good');
-	}
-	if (moveCount <=75){
-		stars[1].classList.toggle('good');
-	}
-	if (moveCount <=90){
-		stars[0].classList.toggle('good');
-	}
-}
-
 let second = 0; 
 let minute = 0;
 let interval;
@@ -211,9 +200,19 @@ interval=setInterval(function(){
         }
     },1000);
 } 
-// test today
-//function setTimerToZero(){
-//  clearInterval(interval);
-//}
+// test OK
+function setTimerToZero(){
+  clearInterval(interval);
+}
+// test OK
+ function displayStars (){
+   if (moveCount >=35){
+    stars[2].style.display='none';
+    stars[5].style.display='none';
+  }
+  if (moveCount >=50){
+    stars[1].style.display='none';
+    stars[4].style.display='none';
+  }
+}
 
- 
