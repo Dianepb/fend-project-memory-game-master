@@ -80,7 +80,8 @@ function restartGame () {
   	setCardsToHidden(cards);
   	setMovesToZero ();
   	BackToBlack ();
-  	matchedCardsArray=[] // test
+  	matchedCardsArray=[]; // test
+ //   clearInterval(interval);// test today
 }
 
 function playAgain(){
@@ -88,8 +89,8 @@ function playAgain(){
 	closeModal ();
   	setMovesToZero ();
   	BackToBlack ();
-  	matchedCardsArray=[] //test
-
+  	matchedCardsArray=[];
+ //   clearInterval(); //test today
 }
 
 /*
@@ -196,8 +197,6 @@ function displayStars (){
 	}
 }
 
-// test function that is showing the number of minutes and seconds from the moment the first card is clicked
-
 let second = 0; 
 let minute = 0;
 let interval;
@@ -212,4 +211,9 @@ interval=setInterval(function(){
         }
     },1000);
 } 
+// test today
+//function setTimerToZero(){
+//  clearInterval();
+//}
 
+ 
