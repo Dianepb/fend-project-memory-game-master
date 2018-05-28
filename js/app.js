@@ -80,8 +80,8 @@ function restartGame () {
   	setCardsToHidden(cards);
   	setMovesToZero ();
   	BackToBlack ();
-  	matchedCardsArray=[]; // test
- //   clearInterval(interval);// test today
+  	matchedCardsArray=[];
+    showAllStars();//test today; 
 }
 
 function playAgain(){
@@ -90,7 +90,7 @@ function playAgain(){
   	setMovesToZero ();
   	BackToBlack ();
   	matchedCardsArray=[];
- //   clearInterval(); //test today
+    showAllStars();//test today
 }
 
 /*
@@ -218,3 +218,11 @@ function setTimerToZero(){
   }
 }
 
+function showAllStars(){
+  stars[0].style.display='inline-block';
+  stars[1].style.display='inline-block';
+  stars[2].style.display='inline-block';
+  stars[3].style.display='inline-block';
+  stars[4].style.display='inline-block';
+  stars[5].style.display='inline-block';
+}
