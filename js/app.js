@@ -112,13 +112,15 @@ function incrementMoves(){
        this.classList.toggle('open'); // changes the background color of the card from black to blue 
        this.classList.toggle('show'); // make the symbols show
        clickedCardArray.push(this); // stores the value of the clicked cards in an array
+     //  displayStars();
 	};
 
 // function that compares cards values - with nested if, to make sure that function executes when the ClickedCardArray has 2 items, innerhtml property replaced by lastElementChild to identify cards, and a setTimeoutfunction, to have the opportunity to see the cards toggling
 function manageClickedCards (){
 // test
-if (clickedCardArray.length === 1 && start === 0) { // initializes the timer once the first card is clicked
-	start=new Date();
+if (clickedCardArray.length === 1 && start === 0) { 
+	start=new Date();// initializes the timer to be shown in the modal once the first card is clicked
+	startTimer();
 }	
 
 else if (clickedCardArray.length === 2) 
@@ -143,7 +145,7 @@ else if (clickedCardArray.length === 2)
       if (matchedCardsArray.length===16){
       document.getElementById("totalMovesModal").innerHTML = moveCount;
       end=new Date();
-      document.getElementById("totalTime").innerHTML = timeSpent();
+      document.getElementById("totalTimeModal").innerHTML = timeSpent();
       modal.style.display = "block";
       displayStars();
       }
@@ -167,11 +169,6 @@ cardArray.forEach(function(card) {
     modal.style.display = "none";
 }
 
-// test
-if (matchedCardsArray.length===16){
-	console.log('test')
-}
-
 
 //test chrono
 
@@ -191,10 +188,28 @@ function displayStars (){
 	if (moveCount <=40){
 		stars[2].classList.toggle('good');
 	}
-	if (moveCount <=60){
+	if (moveCount <=75){
 		stars[1].classList.toggle('good');
 	}
 	if (moveCount <=90){
 		stars[0].classList.toggle('good');
 	}
 }
+
+// test function that is showing the number of minutes and seconds from the moment the first card is clicked
+
+let second = 0; 
+let minute = 0;
+let interval;
+let runningTimer = $("#runningTime");
+function startTimer(){
+interval=setInterval(function(){
+		runningTimer[0].innerHTML = minute+"mins "+second+"secs";
+        second++;
+        if(second == 60){
+            minute++;
+            second = 0;
+        }
+    },1000);
+} 
+
