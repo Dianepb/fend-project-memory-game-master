@@ -162,7 +162,8 @@ else if (clickedCardArray.length === 2)
 cardArray.forEach(function(card) {
   card.addEventListener('click',cardIsClicked);
   card.addEventListener('click',manageClickedCards);
-  card.addEventListener('click',incrementMoves);// test OK
+  card.addEventListener('click',incrementMoves);
+  card.addEventListener('click',displayStars); // test OK
    });
 
 
@@ -204,7 +205,8 @@ interval=setInterval(function(){
 function setTimerToZero(){
   clearInterval(interval);
 }
-// test OK
+
+// function that is showing the stars (1, 2 or 3, according to the number of moves that are recorded)
  function displayStars (){
    if (moveCount >=35){
     stars[2].style.display='none';
