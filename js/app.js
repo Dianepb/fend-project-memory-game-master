@@ -213,7 +213,7 @@ interval=setInterval(function(){
 } 
 // test today
 //function setTimerToZero(){
-//  clearInterval();
+//  clearInterval(interval);
 //}
 
  
