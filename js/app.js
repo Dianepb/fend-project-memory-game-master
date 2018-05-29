@@ -215,6 +215,7 @@ function setTimerToZero(){
 function clearTime(){
   const timer=$('#runningTime');
   timer[0].innerText='0 mins 0 secs';
+  start=0;
 }
 
 // function that is showing the stars (1, 2 or 3, according to the number of moves that are recorded)
