@@ -75,22 +75,24 @@ function setMovesToZero (){
 //test ok
 function restartGame () {
 	removeExistingCards();
-  	shuffle(cardArray);
+  shuffle(cardArray);
 	appendNewCards();
-  	setCardsToHidden(cards);
-  	setMovesToZero ();
-  	BackToBlack ();
-  	matchedCardsArray=[];
-    showAllStars();//test today; 
+  setCardsToHidden(cards);
+  setMovesToZero ();
+  BackToBlack ();
+  matchedCardsArray=[];
+  showAllStars();
+  clearTime();// test today
 }
 
 function playAgain(){
 	restartGame ();
 	closeModal ();
-  	setMovesToZero ();
-  	BackToBlack ();
-  	matchedCardsArray=[];
-    showAllStars();//test today
+  setMovesToZero ();
+  BackToBlack ();
+  matchedCardsArray=[];
+  showAllStars();
+  clearTime();// test today
 }
 
 /*
@@ -102,7 +104,7 @@ let clickedCardArray=[];//creates an empty array; to store the clicked cards. I 
 let arrayLength=clickedCardArray.length
 const modal = document.getElementById('myModal');
 
-// test : function that is incrementing the number of moves 
+//function that is incrementing the number of moves 
 function incrementMoves(){
   moveCount=++moveCount;
   document.getElementById("totalMoves").innerHTML = moveCount;
@@ -113,7 +115,6 @@ function incrementMoves(){
        this.classList.toggle('open'); // changes the background color of the card from black to blue 
        this.classList.toggle('show'); // make the symbols show
        clickedCardArray.push(this); // stores the value of the clicked cards in an array
-     //  displayStars();
 	};
 
 // function that compares cards values - with nested if, to make sure that function executes when the ClickedCardArray has 2 items, innerhtml property replaced by lastElementChild to identify cards, and a setTimeoutfunction, to have the opportunity to see the cards toggling
@@ -121,7 +122,7 @@ function manageClickedCards (){
 // test
 if (clickedCardArray.length === 1 && start === 0) { 
 	start=new Date();// initializes the timer to be shown in the modal once the first card is clicked
-	startTimer();
+	startTimer(); // starts the timer that is displayed on the page
 }	
 
 else if (clickedCardArray.length === 2) 
@@ -173,7 +174,7 @@ cardArray.forEach(function(card) {
 }
 
 
-//test chrono
+//test that is shown on the modal
 
 var start=0;
 var end=0;
@@ -187,6 +188,8 @@ function timeSpent(){
 	return ""+min+" min "+sec+" sec";
 }
 
+
+// function that is displaying the time spend on the page
 let second = 0; 
 let minute = 0;
 let interval;
@@ -201,9 +204,17 @@ interval=setInterval(function(){
         }
     },1000);
 } 
-// test OK
+
+// function that stops the timer displayed on the page
 function setTimerToZero(){
   clearInterval(interval);
+}
+
+// My struggle of today. I guess this is because the clickedCardArray is not properly filled in when one starts a secong play.  
+// function that reset the timer displayed on the page when there is a new game
+function clearTime(){
+  const timer=$('#runningTime');
+  timer[0].innerText='0 mins 0 secs';
 }
 
 // function that is showing the stars (1, 2 or 3, according to the number of moves that are recorded)
