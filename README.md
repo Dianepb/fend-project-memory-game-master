@@ -1,20 +1,14 @@
-# Memory Game Project
+# What is the game all about ? 
 
-## Table of Contents
+The objective is to be able to match all cards contained in the deck by pairs with a minimum number of moves. 
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## How to play ? 
 
-## Instructions
+ You just have to click on **two cards** to flip them and see the symbols they contain. If the two symbols match, you are on a good way to success ! You'll just have to pursue until all the cards contained in the deck are matched by pairs. 
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## How do I know my score and time ? 
 
-To get started, open `js/app.js` and start building out the app's functionality
+There is a timer that is displayed on the page, and that shows the time elapsed since the very first card you clicked on. 
+At the end of the game, a pop up will let you know your score, your final time, and invite you to play again. 
+Also, you can have an idea of wheter you has a great score or not by looking at the number of **stars** displayed on the page and the pop up. 3 is the maximum, and one the minimum. 
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
