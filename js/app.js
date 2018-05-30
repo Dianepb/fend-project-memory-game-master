@@ -10,7 +10,8 @@ const deck=$('.deck')
 let moveCount=0 // number of moves to show all cards by pairs 
 const stars=$('.stars').children();
 let matchedCardsArray=[];// /creates an empty array; to store the matched cards.
-
+let second = 0; // test today
+let minute = 0; // test today 
 cards.forEach(function(card){ // runs the function that turns the Nodelist into an array 
     cardArray.push(card); 
 });
@@ -82,7 +83,7 @@ function restartGame () {
   BackToBlack ();
   matchedCardsArray=[];
   showAllStars();
-  clearTime();// test today
+  clearTime();
 }
 
 function playAgain(){
@@ -92,7 +93,7 @@ function playAgain(){
   BackToBlack ();
   matchedCardsArray=[];
   showAllStars();
-  clearTime();// test today
+  clearTime();
 }
 
 /*
@@ -122,7 +123,9 @@ function manageClickedCards (){
 // test
 if (clickedCardArray.length === 1 && start === 0) { 
 	start=new Date();// initializes the timer to be shown in the modal once the first card is clicked
-	startTimer(); // starts the timer that is displayed on the page
+	second=0;// test today
+  minute=0;// test today
+  startTimer(); // starts the timer that is displayed on the page
 }	
 
 else if (clickedCardArray.length === 2) 
@@ -190,13 +193,15 @@ function timeSpent(){
 
 
 // function that is displaying the time spend on the page
-let second = 0; 
-let minute = 0;
+// test let second = 1; 
+// test let minute = 0;
 let interval;
 let runningTimer = $("#runningTime");
-function startTimer(){
+let timeDisplayed= runningTimer[0].innerHTML;// test today 
+timeDisplayed = minute+"mins "+second+"secs";// test today 
+function startTimer(){ 
 interval=setInterval(function(){
-		runningTimer[0].innerHTML = minute+"mins "+second+"secs";
+runningTimer[0].innerHTML = minute+"mins "+second+"secs"; // test today 
         second++;
         if(second == 60){
             minute++;
@@ -213,6 +218,8 @@ function setTimerToZero(){
 // My struggle of today. I guess this is because the clickedCardArray is not properly filled in when one starts a secong play.  
 // function that reset the timer displayed on the page when there is a new game
 function clearTime(){
+  second = 0;
+  minute = 0; 
   const timer=$('#runningTime');
   timer[0].innerText='0 mins 0 secs';
   start=0;
