@@ -10,10 +10,10 @@ const deck=$('.deck')
 let moveCount=0 // number of moves to show all cards by pairs 
 const stars=$('.stars').children();
 let matchedCardsArray=[];// /creates an empty array; to store the matched cards.
-let second = 0; // test today OK
-let minute = 0; // test today OK
-let interval;// test today OK
-let runningTimer = $("#runningTime");// test today OK
+let second = 0; // test OK
+let minute = 0; // test OK
+let interval;// test  OK
+let runningTimer = $("#runningTime");// test OK
 cards.forEach(function(card){ // runs the function that turns the Nodelist into an array 
     cardArray.push(card); 
 });
@@ -86,7 +86,7 @@ function restartGame () {
   matchedCardsArray=[];
   showAllStars();
   clearTime();
-  setTimerToZero() // test today
+  setTimerToZero() // test today OK
 }
 
 function playAgain(){
@@ -97,7 +97,7 @@ function playAgain(){
   matchedCardsArray=[];
   showAllStars();
   clearTime();
-  setTimerToZero() // test today 
+  setTimerToZero() // test today OK
 }
 
 /*
@@ -120,7 +120,7 @@ function incrementMoves(){
        this.classList.toggle('open'); // changes the background color of the card from black to blue 
        this.classList.toggle('show'); // make the symbols show
        clickedCardArray.push(this); // stores the value of the clicked cards in an array
-	};
+       }
 
 // function that compares cards values - with nested if, to make sure that function executes when the ClickedCardArray has 2 items, innerhtml property replaced by lastElementChild to identify cards, and a setTimeoutfunction, to have the opportunity to see the cards toggling
 function manageClickedCards (){
@@ -164,15 +164,16 @@ else if (clickedCardArray.length === 2)
     },500)
 }
 }
-}
+};
 
 // function that is compiling the other functions, and store them to be invoked when a card is clicked
-cardArray.forEach(function(card) {
+
+  cardArray.forEach(function(card) {
   card.addEventListener('click',cardIsClicked);
   card.addEventListener('click',manageClickedCards);
   card.addEventListener('click',incrementMoves);
   card.addEventListener('click',displayStars); // test OK
-   });
+});
 
 
 // function that is closing the pop up
@@ -197,13 +198,13 @@ function timeSpent(){
 
 
 // function that is displaying the time spend on the page
-// test today : I moved the variable declaration to the top of the file let second = 1; 
-// test today : I moved the variable declaration to the top of the file let minute = 0;
-// test today : I moved the variable declaration to the top of the filelet interval;
-// test today : I moved the variable declaration to the top of the filelet runningTimer = $("#runningTime");
+// test OK : I moved the variable declaration to the top of the file let second = 1; 
+// test OK : I moved the variable declaration to the top of the file let minute = 0;
+// test OK : I moved the variable declaration to the top of the filelet interval;
+// test OK : I moved the variable declaration to the top of the filelet runningTimer = $("#runningTime");
 function startTimer(){ 
 interval=setInterval(function(){
-runningTimer[0].innerHTML = minute+"mins "+second+"secs"; // test today 
+runningTimer[0].innerHTML = minute+"mins "+second+"secs"; // test OK 
         second++;
         if(second == 60){
             minute++;
@@ -217,7 +218,6 @@ function setTimerToZero(){
   clearInterval(interval); 
 }
 
-// My struggle of today. I guess this is because the clickedCardArray is not properly filled in when one starts a secong play.  
 // function that reset the timer displayed on the page when there is a new game
 function clearTime(){
   second = 0;
